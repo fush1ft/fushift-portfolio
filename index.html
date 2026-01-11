@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>František // Software Developer</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Cache buster added to CSS link to force update -->
+    <link rel="stylesheet" href="css/style.css?v=1.1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Share+Tech+Mono&display=swap"
@@ -15,9 +16,8 @@
 
 <body>
     <div id="preloader">
-        <div class="loader-minimal"></div>
+        <div class="spinner"></div>
     </div>
-
 
     <header id="home">
         <div class="container hero-content">
@@ -27,7 +27,8 @@
             <div class="cta">
                 <a href="#projects" class="btn">View My Work</a>
                 <a href="#about" class="btn"
-                    style="background: transparent; color: var(--accent-primary); margin-left: 1rem;">About Me</a>
+                    style="background: transparent; color: var(--accent-blue); border: 1px solid var(--accent-blue); margin-left: 1rem;">About
+                    Me</a>
             </div>
         </div>
     </header>
@@ -36,24 +37,24 @@
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="grid">
-                <div class="glass-panel project-card">
-                    <span class="project-tag">Aviation Systems</span>
+                <div class="card project-card">
+                    <span class="tag">Aviation Systems</span>
                     <h3>24TAB Airspace</h3>
-                    <p class="text-secondary">A professional-grade dashboard for real-time aircraft tracking using SSE
-                        and high-performance data processing.</p>
+                    <p class="text-muted">A professional-grade dashboard for real-time aircraft tracking using SSE and
+                        high-performance data processing.</p>
                 </div>
 
-                <div class="glass-panel project-card">
-                    <span class="project-tag">System Security</span>
+                <div class="card project-card">
+                    <span class="tag">System Security</span>
                     <h3>FUParental</h3>
-                    <p class="text-secondary">Comprehensive administrative suite for mobile security, device management,
-                        and parental controls.</p>
+                    <p class="text-muted">Comprehensive administrative suite for mobile security, device management, and
+                        parental controls.</p>
                 </div>
 
-                <div class="glass-panel project-card">
-                    <span class="project-tag">Infrastructure</span>
+                <div class="card project-card">
+                    <span class="tag">Infrastructure</span>
                     <h3>Homelab C2</h3>
-                    <p class="text-secondary">Centralized infrastructure for managing network nodes, local servers, and
+                    <p class="text-muted">Centralized infrastructure for managing network nodes, local servers, and
                         security testing environments.</p>
                 </div>
             </div>
@@ -63,67 +64,57 @@
     <section id="arsenal">
         <div class="container">
             <h2>Technical Arsenal</h2>
-            <div class="terminal-window">
-                <div class="terminal-header">
-                    <div class="dot red"></div>
-                    <div class="dot yellow"></div>
-                    <div class="dot green"></div>
-                </div>
-                <div class="terminal-body">
-                    <p><span class="cmd">fush1ft@ops:~$</span> <span class="res">list-capabilities</span></p>
-                    <p><span class="cmd">Languages:</span> <span class="res">TypeScript, Python, Kotlin, PHP,
-                            CSS3</span></p>
-                    <p><span class="cmd">Security:</span> <span class="res">Kali Linux Tools, Network Analysis,
-                            Pentesting</span></p>
-                    <p><span class="cmd">Hardware:</span> <span class="res">ESP32, RPi 5, Pioneer DDJ-200</span></p>
-                    <p><span class="cmd">Interests:</span> <span class="res">Aviation Simulation, Music Synthesis,
-                            DJing</span></p>
-                </div>
+            <div class="arsenal-box">
+                <p><span class="blue">fush1ft@ops:~$</span> <span class="white">list-capabilities</span></p>
+                <p><span class="blue">Languages:</span> <span class="white">TypeScript, Python, Kotlin, PHP, CSS3</span>
+                </p>
+                <p><span class="blue">Security:</span> <span class="white">Kali Linux Tools, Network Analysis,
+                        Pentesting</span></p>
+                <p><span class="blue">Hardware:</span> <span class="white">ESP32, RPi 5, Pioneer DDJ-200</span></p>
+                <p><span class="blue">Interests:</span> <span class="white">Aviation Simulation, Music Synthesis,
+                        DJing</span></p>
             </div>
         </div>
     </section>
 
-    <section id="about">
+    <section id="about" style="background: #f8f8f8;">
         <div class="container">
-            <div class="glass-panel" style="padding: 4rem;">
+            <div class="card" style="border: none;">
                 <h2>Digital Intelligence</h2>
                 <div style="max-width: 700px;">
                     <p>Based in Frýdek-Místek, I bridge technical complexity with clean engineering. I'm currently
-                        focused on
-                        high-performance web applications and defensive security tactics, always pushing for precision
-                        and scalability.</p>
-                    <p style="margin-top: 1.5rem;" class="text-secondary">Age: 14 // Tier-1 Operator // Systems
-                        Engineering Enthusiast</p>
+                        focused on high-performance web applications and defensive security tactics, always pushing for
+                        precision and scalability.</p>
+                    <p style="margin-top: 2rem; color: var(--accent-blue); font-weight: 600;">Status: Tier-1 Operator //
+                        Age: 14</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <div class="container" style="text-align: center;">
-            <h2>Contact Me</h2>
-            <p class="text-secondary" style="margin-bottom: 3rem;">Interested in collaboration or have a technical
-                question? Reach out to me on these platforms.</p>
-            <div class="contact-links">
-                <a href="https://github.com/fush1ft" target="_blank" class="contact-card glass-panel">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-container">
+                <a href="https://github.com/fush1ft" target="_blank" class="contact-item">
                     <i class="fab fa-github"></i>
-                    <div style="text-align: left;">
-                        <div style="font-size: 0.7rem; opacity: 0.6;">SOURCE_CODE</div>
-                        <span>GITHUB</span>
+                    <div class="contact-info">
+                        <div class="label">Source Code</div>
+                        <div class="value">GitHub / fush1ft</div>
                     </div>
                 </a>
-                <a href="https://discord.com/users/793771510841737219" target="_blank" class="contact-card glass-panel">
+                <a href="https://discord.com/users/793771510841737219" target="_blank" class="contact-item">
                     <i class="fab fa-discord"></i>
-                    <div style="text-align: left;">
-                        <div style="font-size: 0.7rem; opacity: 0.6;">DIRECT_MESSAGE</div>
-                        <span>DISCORD</span>
+                    <div class="contact-info">
+                        <div class="label">Direct Comms</div>
+                        <div class="value">Discord / 793771510841737219</div>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 60px 0; text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+    <footer>
         <div class="container">
             <p>&copy; 2026 František. All credentials verified.</p>
         </div>
