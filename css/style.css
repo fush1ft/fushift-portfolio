@@ -1,14 +1,16 @@
 :root {
-    --bg-color: #020402;
+    --bg-color: #030803;
     --accent-green: #00ff41;
     --accent-blue: #00f0ff;
-    --text-primary: #e0ffe0;
-    --text-secondary: #8abf8a;
-    --glass-bg: rgba(10, 25, 10, 0.6);
-    --glass-border: rgba(0, 255, 65, 0.2);
-    --panel-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    --text-primary: #f0fff0;
+    --text-secondary: #a0c0a0;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-glow: 0 0 20px rgba(0, 255, 65, 0.1);
+    --panel-glow: 0 10px 40px rgba(0, 0, 0, 0.6);
     --font-mono: 'Share Tech Mono', monospace;
     --font-sans: 'Inter', sans-serif;
+    --glass-blur: blur(25px);
 }
 
 * {
@@ -28,6 +30,56 @@ body {
     font-family: var(--font-sans);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.loader-terminal {
+    width: 400px;
+    max-width: 90vw;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-green);
+}
+
+.loader-bar {
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 255, 65, 0.1);
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--accent-green);
+    box-shadow: 0 0 15px var(--accent-green);
+    transition: width 0.4s ease;
+}
+
+.loader-finished {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 /* Animations */
@@ -92,14 +144,20 @@ h3,
     animation: glitch 0.3s infinite;
 }
 
-/* Glassmorphism */
+/* Glassmorphism Upgrade */
 .glass-panel {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: var(--panel-glow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), var(--glass-glow);
 }
 
 /* Header */
@@ -154,9 +212,10 @@ header {
 }
 
 .hero-content .subtitle {
-    font-size: 1.5rem;
-    color: var(--accent-blue);
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
 }
 
 /* Project Cards */
@@ -171,35 +230,34 @@ header {
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     position: relative;
+    height: 100%;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    border-color: var(--accent-green);
 }
 
 .project-tag {
     font-size: 0.7rem;
-    background: rgba(0, 255, 65, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     padding: 2px 8px;
     border-radius: 4px;
-    color: var(--accent-green);
+    color: var(--accent-blue);
     margin-right: 5px;
 }
 
 /* Terminal Styles */
 .terminal-window {
-    background: #000;
-    border-radius: 8px 8px 0 0;
-    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .terminal-header {
-    background: #1a1a1a;
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
     display: flex;
     gap: 8px;
-    border-radius: 8px 8px 0 0;
 }
 
 .dot {
@@ -221,75 +279,144 @@ header {
 }
 
 .terminal-body {
-    padding: 20px;
+    padding: 25px;
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--accent-green);
+    min-height: 200px;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 14px 34px;
     border: 1px solid var(--accent-green);
     color: var(--accent-green);
     text-decoration: none;
     font-family: var(--font-mono);
     transition: all 0.3s;
     background: transparent;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn:hover {
     background: var(--accent-green);
-    color: var(--bg-color);
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+}
+
+/* Social Dock - Floating Glass OS Vibe */
+.social-dock {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    z-index: 1000;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.social-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+.social-btn i {
+    font-size: 1.5rem;
+}
+
+.social-btn:hover {
+    transform: translateY(-10px) scale(1.15);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-tooltip {
+    position: absolute;
+    bottom: 70px;
+    background: #fff;
+    color: #000;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-item:hover .social-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.social-btn.github:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.social-btn.discord:hover {
+    color: #5865F2;
+    text-shadow: 0 0 10px #5865F2;
 }
 
 @media (max-width: 768px) {
     .hero-content h1 {
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
     .hero-radar {
-        width: 300px;
-        height: 300px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .social-dock {
+        bottom: 20px;
+        gap: 8px;
+        padding: 8px 15px;
+    }
+
+    .social-btn {
+        width: 44px;
+        height: 44px;
     }
 }
 
-/* Social Buttons */
-.social-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    border: 1px solid var(--glass-border);
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    border-radius: 6px;
-    transition: all 0.3s;
-    background: rgba(255, 255, 255, 0.02);
+.blink {
+    animation: blink 1s step-end infinite;
 }
 
-.social-btn i {
-    font-size: 1.1rem;
-}
-
-.social-btn:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-primary);
-    transform: translateY(-2px);
-    border-color: var(--accent-blue);
-}
-
-.social-btn.github:hover {
-    border-color: #fff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-}
-
-.social-btn.discord:hover {
-    border-color: #5865F2;
-    box-shadow: 0 0 15px rgba(88, 101, 242, 0.3);
-    color: #5865F2;
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
