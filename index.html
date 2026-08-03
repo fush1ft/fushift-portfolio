@@ -4,116 +4,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>František // Software Developer</title>
-    <!-- Cache buster added to CSS link to force update -->
-    <link rel="stylesheet" href="css/style.css?v=1.4">
+    <title>František Ubík — Fushift Portfolio</title>
+    <meta name="description" content="Personal developer portfolio of František Ubík (Fushift). Systems builder specializing in full-stack engineering, aviation telemetry, and security research.">
+
+    <!-- Fonts: Instrument Serif (Display) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Share+Tech+Mono&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for a clean, thick technical line weight -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="css/style.css?v=2.0">
 </head>
 
 <body>
+    <!-- Top Navigation -->
+    <nav class="nav" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="#home" class="brand">
+                <span class="brand-title">fushift.fun</span>
+            </a>
+            <div class="nav-links">
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#arsenal" class="nav-item">Arsenal</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#contact" class="nav-btn">Signal</a>
+            </div>
+        </div>
+    </nav>
 
-    <header id="home">
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
         <div class="container hero-content">
+            <div class="eyebrow-container">
+                <span class="status-dot"></span>
+                <span class="eyebrow-text">OPERATIONAL · NODE C1</span>
+            </div>
             <h1>Building the future of digital systems.</h1>
-            <p class="subtitle">I'm František, a 14-year-old software developer specialized in full-stack engineering,
-                aviation data systems, and cybersecurity research.</p>
-            <div class="cta">
-                <a href="#projects" class="btn">View My Work</a>
-                <a href="#about" class="btn"
-                    style="background: transparent; color: var(--accent-blue); border: 1px solid var(--accent-blue); margin-left: 1rem;">About
-                    Me</a>
+            <p class="subtitle">I'm František, a 14-year-old software developer and systems builder specializing in full-stack engineering, aviation data networks, and security research.</p>
+            <div class="cta-group">
+                <a href="#projects" class="btn btn-primary">Explore Work</a>
+                <a href="#about" class="btn btn-secondary">Read Profile</a>
             </div>
         </div>
     </header>
 
-    <section id="projects">
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
         <div class="container">
-            <h2>Featured Projects</h2>
+            <div class="section-head reveal">
+                <div class="kicker">Portfolio</div>
+                <h2>Featured Projects</h2>
+                <p class="section-sub">Production-grade systems running live on self-hosted environments.</p>
+            </div>
+            
             <div class="grid">
-                <div class="card project-card">
-                    <span class="tag">Aviation Systems</span>
+                <a href="/atis/" class="card project-card reveal">
+                    <div class="card-header">
+                        <span class="tag tag-blue">Aviation</span>
+                        <i class="ph-bold ph-broadcast card-icon" aria-hidden="true"></i>
+                    </div>
+                    <h3>ATIS Monitor</h3>
+                    <p class="text-muted">Automated weather and terminal information service feed for Czech airports, pulling raw telemetry and parsing active runways and wind vectors.</p>
+                    <div class="card-footer">
+                        <span class="tech-spec">PHP · Meteo API</span>
+                    </div>
+                </a>
+
+                <a href="/24tab/" class="card project-card reveal">
+                    <div class="card-header">
+                        <span class="tag tag-blue">Aviation telemetry</span>
+                        <i class="ph-bold ph-airplane-takeoff card-icon" aria-hidden="true"></i>
+                    </div>
                     <h3>24TAB Airspace</h3>
-                    <p class="text-muted">A professional-grade dashboard for real-time aircraft tracking using SSE and
-                        high-performance data processing.</p>
-                </div>
+                    <p class="text-muted">A professional-grade real-time airspace tracking panel utilizing server-sent events (SSE) and fast data pipeline execution to display active traffic.</p>
+                    <div class="card-footer">
+                        <span class="tech-spec">SSE · Node.js</span>
+                    </div>
+                </a>
 
-                <div class="card project-card">
-                    <span class="tag">System Security</span>
-                    <h3>FUParental</h3>
-                    <p class="text-muted">Comprehensive administrative suite for mobile security, device management, and
-                        parental controls.</p>
-                </div>
+                <a href="/vpc/" class="card project-card reveal">
+                    <div class="card-header">
+                        <span class="tag tag-green">Communications</span>
+                        <i class="ph-bold ph-phone card-icon" aria-hidden="true"></i>
+                    </div>
+                    <h3>Virtual Call Center (VPC)</h3>
+                    <p class="text-muted">A comprehensive virtual call center routing engine and management dashboard [currently offline] built for team-level telephony controls.</p>
+                    <div class="card-footer">
+                        <span class="tech-spec">Docker · PostgreSQL</span>
+                    </div>
+                </a>
 
-                <div class="card project-card">
-                    <span class="tag">Infrastructure</span>
-                    <h3>Homelab C2</h3>
-                    <p class="text-muted">Centralized infrastructure for managing network nodes, local servers, and
-                        security testing environments.</p>
+                <a href="/worldview/" class="card project-card reveal">
+                    <div class="card-header">
+                        <span class="tag tag-amber">Geospatial</span>
+                        <i class="ph-bold ph-globe card-icon" aria-hidden="true"></i>
+                    </div>
+                    <h3>Nox WorldView</h3>
+                    <p class="text-muted">Live satellite telemetry tracking and active orbital visualization system displaying real-time space asset passes.</p>
+                    <div class="card-footer">
+                        <span class="tech-spec">PHP · WebGL</span>
+                    </div>
+                </a>
+
+                <a href="/streamcinema/" class="card project-card reveal">
+                    <div class="card-header">
+                        <span class="tag tag-blue">Media Hub</span>
+                        <i class="ph-bold ph-play-circle card-icon" aria-hidden="true"></i>
+                    </div>
+                    <h3>StreamCinema</h3>
+                    <p class="text-muted">A private high-performance media server with client-side library visualization, hero carousels, and watch progression memory.</p>
+                    <div class="card-footer">
+                        <span class="tech-spec">Node.js · Video</span>
+                    </div>
+                </a>
+
+                <a href="/printwatch/" class="card project-card reveal">
+                    <div class="card-header">
+                        <span class="tag tag-red">Diagnostics</span>
+                        <i class="ph-bold ph-printer card-icon" aria-hidden="true"></i>
+                    </div>
+                    <h3>PrintWatch</h3>
+                    <p class="text-muted">Remote 3D printing control suite incorporating OctoPrint camera telemetry feeds and real-time execution safety audits.</p>
+                    <div class="card-footer">
+                        <span class="tech-spec">OctoPrint · Python</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Arsenal -->
+    <section id="arsenal" class="arsenal-section">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="kicker">Capabilities</div>
+                <h2>Technical Arsenal</h2>
+            </div>
+            
+            <div class="arsenal-box reveal">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="terminal-title">fush1ft@ops:~</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="prompt">fush1ft@ops:~$</span> <kbd class="command">list-capabilities</kbd></p>
+                    <p class="response-line"><span class="label">Languages:</span> <kbd class="value">TypeScript, Python, Kotlin, PHP, CSS3</kbd></p>
+                    <p class="response-line"><span class="label">Security:</span> <kbd class="value">Kali Linux, Network Traffic Analysis, Vulnerability Auditing</kbd></p>
+                    <p class="response-line"><span class="label">Hardware:</span> <kbd class="value">ESP32 microcontrollers, Raspberry Pi 5, Pioneer DDJ-200</kbd></p>
+                    <p class="response-line"><span class="label">Interests:</span> <kbd class="value">Aviation Telemetry, WebGL Graphics, Sound Synthesis, DJing</kbd></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="arsenal">
+    <!-- Profile Section -->
+    <section id="about" class="about-section">
         <div class="container">
-            <h2>Technical Arsenal</h2>
-            <div class="arsenal-box">
-                <p><span class="blue">fush1ft@ops:~$</span> <span class="white">list-capabilities</span></p>
-                <p><span class="blue">Languages:</span> <span class="white">TypeScript, Python, Kotlin, PHP, CSS3</span>
-                </p>
-                <p><span class="blue">Security:</span> <span class="white">Kali Linux Tools, Network Analysis,
-                        Pentesting</span></p>
-                <p><span class="blue">Hardware:</span> <span class="white">ESP32, RPi 5, Pioneer DDJ-200</span></p>
-                <p><span class="blue">Interests:</span> <span class="white">Aviation Simulation, Music Synthesis,
-                        DJing</span></p>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <div class="card" style="border: none;">
-                <h2>Digital Intelligence</h2>
-                <div style="max-width: 700px;">
-                    <p>Based in Frýdek-Místek, I bridge technical complexity with clean engineering. I'm currently
-                        focused on high-performance web applications and defensive security tactics, always pushing for
-                        precision and scalability.</p>
-                    <p style="margin-top: 2rem; color: var(--accent-blue); font-weight: 600;">Status: Tier-1 Operator //
-                        Age: 14</p>
+            <div class="card about-card reveal">
+                <div class="about-grid">
+                    <div class="about-details">
+                        <div class="kicker">Profile</div>
+                        <h2>Digital Intelligence</h2>
+                        <p>Based in Frýdek-Místek, Czech Republic, I bridge design details with hard-nosed back-end engineering. I run self-hosted nodes, design lightweight real-time layouts, and build defensive security prototypes.</p>
+                        <p>My workflow focuses on verified logic, minimal dependencies, and high visual standards. I believe that clean engineering shouldn't look boring.</p>
+                        <div class="status-badge">
+                            <span class="status-title">Status:</span>
+                            <span class="status-value">Tier-1 Operator // Age 14</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2>Contact</h2>
-            <div class="contact-container">
-                <a href="https://github.com/fush1ft" target="_blank" class="contact-item">
-                    <i class="fab fa-github"></i>
+            <div class="section-head reveal">
+                <div class="kicker">Signal</div>
+                <h2>Connect</h2>
+                <p class="section-sub">Direct channels for technical discussions, project review, or inquiries.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <a href="https://github.com/fush1ft" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
+                    <div class="contact-icon-wrapper">
+                        <i class="ph-bold ph-github-logo" aria-hidden="true"></i>
+                    </div>
                     <div class="contact-info">
                         <div class="label">Source Code</div>
-                        <div class="value">GitHub / fush1ft</div>
+                        <div class="value">github.com/fush1ft</div>
                     </div>
+                    <i class="ph-bold ph-arrow-up-right arrow-icon" aria-hidden="true"></i>
                 </a>
-                <a href="https://discord.com/users/793771510841737219" target="_blank" class="contact-item">
-                    <i class="fab fa-discord"></i>
+                
+                <a href="https://discord.com/users/793771510841737219" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
+                    <div class="contact-icon-wrapper">
+                        <i class="ph-bold ph-discord-logo" aria-hidden="true"></i>
+                    </div>
                     <div class="contact-info">
                         <div class="label">Direct Comms</div>
-                        <div class="value">Discord / 793771510841737219</div>
+                        <div class="value">Discord / fush1ft_404</div>
                     </div>
+                    <i class="ph-bold ph-arrow-up-right arrow-icon" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 František. All credentials verified.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 František Ubík. Handcrafted under constraint.</p>
+            <div class="footer-links">
+                <a href="https://fushift.fun" target="_blank" rel="noopener noreferrer">fushift.fun</a>
+                <span class="dot-separator"></span>
+                <a href="#home">Back to Top</a>
+            </div>
         </div>
     </footer>
 
